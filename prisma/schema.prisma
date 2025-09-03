@@ -19,14 +19,15 @@ model Customer {
 }
 
 model User {
-  id         Int      @id @default(autoincrement())
-  email      String   @unique
-  password   String
-  role       String   @default("user")
-  customer   Customer @relation(fields: [customerId], references: [id])
-  customerId Int
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id           Int             @id @default(autoincrement())
+  email        String          @unique
+  password     String
+  role         String          @default("user")
+  customer     Customer        @relation(fields: [customerId], references: [id])
+  customerId   Int
+  refreshTokens RefreshToken[] 
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
 }
 
 model RefreshToken {
